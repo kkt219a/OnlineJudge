@@ -1,4 +1,4 @@
-// FORTRESS - 요새 - 트리 - 존나 어렵다 다시
+// FORTRESS - 요새 - 트리 - 어렵다 다시
 
 #include<iostream>
 #include<vector>
