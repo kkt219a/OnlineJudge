@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		513A749D26FB7744009FDADD /* cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51DA143A26F4BC9D00336EB9 /* cube.cpp */; };
+		51E16B0B26FCCC6000994DCA /* bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E16B0A26FCCC6000994DCA /* bitmap.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,12 +32,13 @@
 		510BFBA426F2042200FC3C42 /* paper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = paper.cpp; sourceTree = "<group>"; };
 		510BFBA926F214E900FC3C42 /* sequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sequence.cpp; sourceTree = "<group>"; };
 		513A749426FB74DE009FDADD /* fibonacci.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fibonacci.cpp; sourceTree = "<group>"; };
-		513A749726FB773C009FDADD /* 2.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.out; sourceTree = "<group>"; };
-		513A749826FB773C009FDADD /* 1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.out; sourceTree = "<group>"; };
-		513A749926FB773C009FDADD /* 2.inp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.inp; sourceTree = "<group>"; };
-		513A749A26FB773C009FDADD /* 1.inp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.inp; sourceTree = "<group>"; };
-		513A749B26FB773C009FDADD /* fibonacci.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fibonacci.out; sourceTree = "<group>"; };
 		51DA143A26F4BC9D00336EB9 /* cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cube.cpp; sourceTree = "<group>"; };
+		51E16B0526FCCC4A00994DCA /* 1.inp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.inp; sourceTree = "<group>"; };
+		51E16B0626FCCC4A00994DCA /* 1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.out; sourceTree = "<group>"; };
+		51E16B0726FCCC4A00994DCA /* bitmap.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmap.out; sourceTree = "<group>"; };
+		51E16B0826FCCC4A00994DCA /* 2.inp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.inp; sourceTree = "<group>"; };
+		51E16B0926FCCC4A00994DCA /* 2.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.out; sourceTree = "<group>"; };
+		51E16B0A26FCCC6000994DCA /* bitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bitmap.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +71,12 @@
 		510BFB6026F06D1A00FC3C42 /* espa */ = {
 			isa = PBXGroup;
 			children = (
-				513A749A26FB773C009FDADD /* 1.inp */,
-				513A749826FB773C009FDADD /* 1.out */,
-				513A749926FB773C009FDADD /* 2.inp */,
-				513A749726FB773C009FDADD /* 2.out */,
-				513A749B26FB773C009FDADD /* fibonacci.out */,
+				51E16B0526FCCC4A00994DCA /* 1.inp */,
+				51E16B0626FCCC4A00994DCA /* 1.out */,
+				51E16B0826FCCC4A00994DCA /* 2.inp */,
+				51E16B0926FCCC4A00994DCA /* 2.out */,
+				51E16B0726FCCC4A00994DCA /* bitmap.out */,
+				51E16B0A26FCCC6000994DCA /* bitmap.cpp */,
 				513A749426FB74DE009FDADD /* fibonacci.cpp */,
 				510BFB8026F0A76300FC3C42 /* bowling.cpp */,
 				510BFB6926F06D3100FC3C42 /* cross.cpp */,
@@ -144,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				513A749D26FB7744009FDADD /* cube.cpp in Sources */,
+				51E16B0B26FCCC6000994DCA /* bitmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
