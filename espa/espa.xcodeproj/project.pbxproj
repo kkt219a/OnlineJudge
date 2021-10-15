@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		511D01002711D93300F7F1AD /* coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 511D00FF2711D93300F7F1AD /* coin.cpp */; };
+		516EE07627146AF20001410E /* coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 511D00FF2711D93300F7F1AD /* coin.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +40,7 @@
 		516396FE270747280031995E /* 2.out */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2.out; sourceTree = "<group>"; };
 		516396FF270747280031995E /* 1.inp */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.inp; sourceTree = "<group>"; };
 		51639700270747280031995E /* 1.out */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.out; sourceTree = "<group>"; };
+		516EE068271421830001410E /* airconditiner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = airconditiner.cpp; sourceTree = "<group>"; };
 		51DA143A26F4BC9D00336EB9 /* cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cube.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +78,7 @@
 				51639700270747280031995E /* 1.out */,
 				516396FD270747280031995E /* 2.inp */,
 				516396FE270747280031995E /* 2.out */,
+				516EE068271421830001410E /* airconditiner.cpp */,
 				511D00F827118AA400F7F1AD /* coin.out */,
 				511D00FB2711AD3400F7F1AD /* coin3.cpp */,
 				511D00FF2711D93300F7F1AD /* coin.cpp */,
@@ -150,7 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				511D01002711D93300F7F1AD /* coin.cpp in Sources */,
+				516EE07627146AF20001410E /* coin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
