@@ -1,43 +1,52 @@
 package ps.programmers.level2;
+import ps.Main;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 //스택/큐 - 다리를 지나는 트럭
-// 98분 - 다시
+// 50분
 public class BridgeTruck {
-    Queue<Integer> truck = new LinkedList<>();
-    Queue<BridgeOnTruck> onTruck = new LinkedList<>();
     public int solution(int bridge_length, int weight, int[] truck_weights) {
+        int nowTime = 1,bridgeNowWeight=0;
+        Queue<Truck> bridgeQueue = new LinkedList<>();
+        Queue<Integer> waitingQueue = new LinkedList<>();
         for (int truck_weight : truck_weights) {
-            truck.add(truck_weight);
+            waitingQueue.add(truck_weight);
         }
-        int time = 1;
-        int nowBridgeWeight = 0, nowBridgeTruck=0;
-        while (!truck.isEmpty()||!onTruck.isEmpty()) {
-            if(!onTruck.isEmpty()&&time==onTruck.peek().finishTime){
-                BridgeOnTruck poll = onTruck.poll();
-                nowBridgeWeight-= poll.weight;
-                nowBridgeTruck--;
-            }
-            if(!truck.isEmpty()){
-                Integer peek = truck.peek();
-                if(nowBridgeWeight+peek<=weight&&nowBridgeTruck+1<=bridge_length){
-                    onTruck.add(new BridgeOnTruck(peek,time+bridge_length));
-                    nowBridgeWeight += peek;
-                    nowBridgeTruck++;
-                    truck.poll();
+        while(true){
+            boolean end = true;
+            while(!waitingQueue.isEmpty()){
+                end = false;
+                Integer poll = waitingQueue.peek();
+                if(bridge_length>=bridgeQueue.size()&&bridgeNowWeight+poll<=weight){
+                    waitingQueue.poll();
+                    bridgeQueue.add(new Truck(poll,nowTime+bridge_length));
+                    bridgeNowWeight+=poll;
+                    nowTime++;
+                    if(bridgeQueue.peek().endTime==nowTime){
+                        Truck poll2 = bridgeQueue.poll();
+                        bridgeNowWeight -= poll2.weight;
+                    }
+                }else{
+                    break;
                 }
             }
-            time++;
+            if(!bridgeQueue.isEmpty()){
+                end = false;
+                Truck poll = bridgeQueue.poll();
+                nowTime = poll.endTime;
+                bridgeNowWeight -= poll.weight;
+            }
+            if(end) break;
         }
-        return time-1;
+        return nowTime;
     }
-    static class BridgeOnTruck{
-        int weight;
-        int finishTime;
-        public BridgeOnTruck(int weight, int finishTime) {
+    static class Truck{
+        int weight,endTime;
+        public Truck(int weight, int endTime) {
             this.weight = weight;
-            this.finishTime = finishTime;
+            this.endTime = endTime;
         }
     }
 }
