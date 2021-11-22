@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		516EE07627146AF20001410E /* coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 511D00FF2711D93300F7F1AD /* coin.cpp */; };
+		5159128A274BC18C00A1E9D2 /* sum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51591286274BAF8500A1E9D2 /* sum.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +35,9 @@
 		511D00FB2711AD3400F7F1AD /* coin3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coin3.cpp; sourceTree = "<group>"; };
 		511D00FF2711D93300F7F1AD /* coin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coin.cpp; sourceTree = "<group>"; };
 		513A749426FB74DE009FDADD /* fibonacci.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fibonacci.cpp; sourceTree = "<group>"; };
+		51591286274BAF8500A1E9D2 /* sum.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sum.cpp; sourceTree = "<group>"; };
+		51591288274BB25400A1E9D2 /* rescue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rescue.cpp; sourceTree = "<group>"; };
+		5159128B274BCD7600A1E9D2 /* sum.out */ = {isa = PBXFileReference; lastKnownFileType = text; path = sum.out; sourceTree = "<group>"; };
 		516396FA270746020031995E /* jump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jump.cpp; sourceTree = "<group>"; };
 		516396FD270747280031995E /* 2.inp */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2.inp; sourceTree = "<group>"; };
 		516396FE270747280031995E /* 2.out */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2.out; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 				516396FE270747280031995E /* 2.out */,
 				516EE068271421830001410E /* airconditiner.cpp */,
 				511D00F827118AA400F7F1AD /* coin.out */,
+				5159128B274BCD7600A1E9D2 /* sum.out */,
 				511D00FB2711AD3400F7F1AD /* coin3.cpp */,
 				511D00FF2711D93300F7F1AD /* coin.cpp */,
 				516396FA270746020031995E /* jump.cpp */,
@@ -92,6 +96,8 @@
 				510A4A1626F39DA3004A4E84 /* family.cpp */,
 				510A4A2326F3AE81004A4E84 /* exam.cpp */,
 				51DA143A26F4BC9D00336EB9 /* cube.cpp */,
+				51591286274BAF8500A1E9D2 /* sum.cpp */,
+				51591288274BB25400A1E9D2 /* rescue.cpp */,
 			);
 			path = espa;
 			sourceTree = "<group>";
@@ -152,7 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516EE07627146AF20001410E /* coin.cpp in Sources */,
+				5159128A274BC18C00A1E9D2 /* sum.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
