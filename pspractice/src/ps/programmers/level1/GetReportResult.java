@@ -2,6 +2,7 @@ package ps.programmers.level1;
 
 import java.util.*;
 
+// 2022 KAKAO BLIND RECRUITMENT - 신고 결과 받기
 // 2022/03/01 17:10~ 17:50 --> 다시
 public class GetReportResult {
 	public int[] solution(String[] id_list, String[] report, int k) {
