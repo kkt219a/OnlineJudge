@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 // 2018 KAKAO BLIND RECRUITMENT - [3차] 압축
-// 2022/04/04 17:19~17:57 38분... 아... 쉬운건데... 느려서 다시...
+// 2022/04/05 17:19~17:57 38분... 아... 쉬운건데... 느려서 다시...
 public class Compression {
 	Map<String, Integer> dictionary = new HashMap<>();
 	List<Integer> answers = new ArrayList<>();

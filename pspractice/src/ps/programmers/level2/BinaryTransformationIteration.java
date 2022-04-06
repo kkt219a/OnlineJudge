@@ -1,7 +1,7 @@
 package ps.programmers.level2;
 
 // 월간 코드 챌린지 시즌1 - 이진 변환 반복하기
-// 2022/04/04 17:03~17:13 = 10분
+// 2022/04/05 17:03~17:13 = 10분
 public class BinaryTransformationIteration {
 	public int[] solution(String s) {
 		int lengthCount = 0;
