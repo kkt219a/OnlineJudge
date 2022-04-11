@@ -3,8 +3,8 @@ package ps.programmers.level2;
 import java.util.Arrays;
 
 // Summer/Winter Coding(~2018) - 배달
-// 2022/04/11 17:01~21
-public class Delivery {
+// 2022/04/11 17:01~17:21(20)
+public class DeliveryFloyd {
 	static final int MAX_VALUE = 500_001;
 	int[][] map;
 	public int solution(int N, int[][] road, int K) {
