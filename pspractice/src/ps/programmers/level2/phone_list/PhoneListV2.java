@@ -1,6 +1,7 @@
-package ps.programmers.level2;
+package ps.programmers.level2.phone_list;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 //해시 - 전화번호 목록
 // 찾아본 솔루션, 정답

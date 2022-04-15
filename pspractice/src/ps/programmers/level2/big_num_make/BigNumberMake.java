@@ -1,7 +1,6 @@
-package ps.programmers.level2;
+package ps.programmers.level2.big_num_make;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Stack;
 
 //탐욕법(Greedy) - 큰 수 만들기
 //16:40~18:10 = 90분

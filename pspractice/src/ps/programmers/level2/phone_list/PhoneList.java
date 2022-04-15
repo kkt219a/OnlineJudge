@@ -1,6 +1,7 @@
-package ps.programmers.level2;
+package ps.programmers.level2.phone_list;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 //해시 - 전화번호 목록
 // 틀린 솔루션
