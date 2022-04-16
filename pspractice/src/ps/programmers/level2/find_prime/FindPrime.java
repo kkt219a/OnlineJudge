@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.find_prime;
 import java.util.*;
 //완전탐색 - 소수 찾기
 //17:22~18:16

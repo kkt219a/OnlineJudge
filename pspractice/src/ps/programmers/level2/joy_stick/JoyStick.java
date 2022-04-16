@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.joy_stick;
 
 //탐욕법(Greedy) - 조이스틱
 //40분, 미해결, 참조

@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.bridge_truck;
 import ps.Main;
 
 import java.util.*;
