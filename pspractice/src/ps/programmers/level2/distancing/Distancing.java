@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.distancing;
 
 
 import java.util.PriorityQueue;

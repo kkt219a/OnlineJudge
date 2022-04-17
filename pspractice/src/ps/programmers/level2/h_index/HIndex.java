@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.h_index;
 import java.util.*;
 // 정렬 - H-Index
 //35분

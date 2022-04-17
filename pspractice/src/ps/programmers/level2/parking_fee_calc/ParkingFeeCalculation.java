@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.parking_fee_calc;
 
 import java.util.*;
 // 2022 KAKAO BLIND RECRUITMENT - 주차 요금 계산
