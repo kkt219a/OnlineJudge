@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.open_chatting;
 
 import java.util.Arrays;
 import java.util.HashMap;

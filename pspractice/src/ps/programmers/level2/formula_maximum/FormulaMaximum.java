@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.formula_maximum;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.menu_renewal;
 
 import java.util.*;
 
