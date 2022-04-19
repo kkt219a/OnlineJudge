@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.translated_parentheses;
 
 import java.util.Stack;
 

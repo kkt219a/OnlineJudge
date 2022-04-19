@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.ranking_search;
 
 import java.util.ArrayList;
 import java.util.List;

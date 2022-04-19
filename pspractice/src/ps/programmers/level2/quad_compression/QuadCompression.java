@@ -1,4 +1,4 @@
-package ps.programmers.level2;
+package ps.programmers.level2.quad_compression;
 
 //월간 코드 챌린지 시즌1 - 쿼드압축 후 개수 세기
 //14:45~ 15:35: 50분
