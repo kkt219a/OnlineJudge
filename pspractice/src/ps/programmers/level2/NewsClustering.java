@@ -1,4 +1,4 @@
-package ps.programmers.level1;
+package ps.programmers.level2;
 
 import java.util.HashMap;
 import java.util.Map;

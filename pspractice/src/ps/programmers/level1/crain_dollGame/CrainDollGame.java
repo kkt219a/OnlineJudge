@@ -1,4 +1,4 @@
-package ps.programmers.level1;
+package ps.programmers.level1.crain_dollGame;
 
 import java.util.Stack;
 

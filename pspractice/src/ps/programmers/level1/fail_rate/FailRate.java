@@ -1,4 +1,4 @@
-package ps.programmers.level1;
+package ps.programmers.level1.fail_rate;
 
 import java.util.Arrays;
 

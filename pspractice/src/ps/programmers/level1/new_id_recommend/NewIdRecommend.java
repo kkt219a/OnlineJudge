@@ -1,4 +1,4 @@
-package ps.programmers.level1;
+package ps.programmers.level1.new_id_recommend;
 
 import java.util.ArrayList;
 import java.util.Arrays;

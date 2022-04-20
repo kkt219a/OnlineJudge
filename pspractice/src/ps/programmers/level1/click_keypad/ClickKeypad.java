@@ -1,4 +1,4 @@
-package ps.programmers.level1;
+package ps.programmers.level1.click_keypad;
 
 import java.util.Objects;
 
