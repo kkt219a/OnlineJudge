@@ -2,7 +2,7 @@ package ps.programmers.level2;
 
 import java.util.Arrays;
 
-// 2018 KAKAO BLIND RECRUITMENT -[1차] 프렌즈4블록
+// 2018 KAKAO BLIND RECRUITMENT - [1차] 프렌즈4블록
 // 2022/03/26 14:39~14:50,16:42~17:36  = 11+54 = 65분 다시 ㅠㅠ
 public class FriendsFourBlock {
 	char[][] boardChars;

@@ -1,6 +1,4 @@
-package ps.programmers.level3;
-
-import java.util.Arrays;
+package ps.programmers.level3.lock_and_key;
 
 // 2020 KAKAO BLIND RECRUITMENT - 자물쇠와 열쇠
 // 2022/04/22 02:00~03:47 = 107분......
