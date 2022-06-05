@@ -23,16 +23,16 @@ public class P1644 {
 			}
 		}
 		int n  = Integer.parseInt(br.readLine());
-		int tempSum = primes.get(0);
+		int tempSum = 0;
 		int cnt = 0;
-		for(int start=0, end = 1; start < end;) {
-			if(tempSum == n) {
-				cnt++;
-			}
+		for(int start=0, end = 0; start < primes.size();) {
 			if(tempSum >= n || end == primes.size()) {
 				tempSum -= primes.get(start++);
 			} else {
 				tempSum += primes.get(end++);
+			}
+			if(tempSum == n) {
+				cnt++;
 			}
 		}
 		System.out.println(cnt);
