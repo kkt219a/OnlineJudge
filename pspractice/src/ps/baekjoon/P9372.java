@@ -1,29 +1,30 @@
 package ps.baekjoon;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
-// 2022/06/11 18:20 ~ xx:xx = xx분
+// 2022/06/15 10:48 ~ 11:04 = 16분
 public class P9372 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	static int[][] dp;
+	static StringBuilder sb = new StringBuilder();
+	static StringTokenizer st;
+	static int n,m;
 
 	public static void main(String[] args) throws IOException {
 		int t = Integer.parseInt(br.readLine());
-		for (int k = 0; k < t; k++) {
-			int n = Integer.parseInt(br.readLine());
-			dp = new int[n + 1][n + 1];
-			int max = Integer.MIN_VALUE;
-			int[] arr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			for (int i = 1; i <= n; i++) {
-				for (int j = 1; j <= i; j++) {
-					dp[j][i] = dp[j][i - 1] + arr[i - 1];
-					max = Math.max(max, dp[j][i]);
-				}
+		for(int i=0;i<t;i++) {
+			st = new StringTokenizer(br.readLine());
+			n = Integer.parseInt(st.nextToken());
+			m = Integer.parseInt(st.nextToken());
+			for(int j=0;j<m;j++) {
+				br.readLine();
 			}
-			System.out.println(max);
+			sb.append(n-1).append("\n");
 		}
+		System.out.println(sb);
 	}
 }
