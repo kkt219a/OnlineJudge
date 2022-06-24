@@ -27,7 +27,6 @@ public class P17208 {
 			ch[i] = Integer.parseInt(st.nextToken());
 			po[i] = Integer.parseInt(st.nextToken());
 		}
-		// dp[0][0] = 1;
 		for (int a = 0; a < n; a++) {
 			for (int i = m; i >= 1; i--) {
 				for (int j = k; j >= 1; j--) {
@@ -36,10 +35,6 @@ public class P17208 {
 					}
 				}
 			}
-			for (int[] ints : dp) {
-				System.out.println(Arrays.toString(ints));
-			}
-			System.out.println();
 		}
 		System.out.println(dp[m][k]);
 	}
