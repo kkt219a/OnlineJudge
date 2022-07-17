@@ -1,51 +1,45 @@
 package ps.baekjoon;
 
-// 2022/07/14 17:36 ~ xx:xx = xx분
+// 2022/07/15 풀이 참조
 public class P1799 {
-	static int n, max=-1;
+	static int n, max=-1, ans;
+	static boolean[] dl, dr;
+	static boolean[][] map;
 
 	public static void main(String[] args) throws Exception {
 		n = read();
-		boolean[][] origin = new boolean[n][n];
+		map = new boolean[n][n];
+		dl = new boolean[2*n-1];
+		dr = new boolean[2*n-1];
 		for(int i=0;i<n;i++) {
 			for(int j=0;j<n;j++) {
-				origin[i][j] = read() == 1;
+				map[i][j] = read() == 1;
 			}
 		}
-		dfs(origin, 0);
-		System.out.println(max);
+		dfs(0,0, 0);
+		ans += max;
+		max = -1;
+		dfs(0,1, 0);
+		ans += max;
+		System.out.println(ans);
 	}
 
-	private static void dfs(boolean[][] map, int depth) {
+	private static void dfs(int depth, int odd, int row) {
 		max = Math.max(max, depth);
-		for(int i=0;i<n;i++) {
-			for(int j=0;j<n;j++) {
-				if(map[i][j]) {
-					dfs(painting(map, i, j), depth+1);
+		for(int i=row;i<n;i++) {
+			int j = (i%2 == 0 && odd == 0) || (i%2 == 1 && odd == 1) ? 0 : 1;
+			for(;j<n;j+=2) {
+				if(map[i][j]&&!dl[i+j]&&!dr[n-1-i+j]) {
+					dl[i+j] = true;
+					dr[n-1-i+j] = true;
+					map[i][j] = false;
+					dfs(depth+1, odd, i);
+					map[i][j] = true;
+					dl[i+j] = false;
+					dr[n-1-i+j] = false;
 				}
 			}
 		}
-	}
-
-	public static boolean[][] painting(boolean[][] map, int x, int y) {
-		boolean[][] ret = new boolean[n][n];
-		for (int i = 0; i < n; i++) {
-			System.arraycopy(map[i], 0, ret[i], 0, n);
-		}
-		ret[x][y] = false;
-		for (int i = x + 1, j = y + 1; i < n && j < n; i++, j++) {
-			ret[i][j] = false;
-		}
-		for (int i = x + 1, j = y - 1; i < n && j >= 0; i++, j--) {
-			ret[i][j] = false;
-		}
-		for (int i = x - 1, j = y + 1; i >= 0 && j < n; i--, j++) {
-			ret[i][j] = false;
-		}
-		for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
-			ret[i][j] = false;
-		}
-		return ret;
 	}
 
 	static int read() throws Exception {
