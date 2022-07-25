@@ -9,7 +9,7 @@ public class Main {
 	static StringBuilder sb = new StringBuilder();
 	static StringTokenizer st;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 	}
 
@@ -23,5 +23,12 @@ public class Main {
 
 	static void newToken() throws IOException {
 		st = new StringTokenizer(br.readLine());
+	}
+
+	static int read() throws Exception {
+		int c, n = System.in.read() & 15;
+		while ((c = System.in.read()) > 32)
+			n = (n << 3) + (n << 1) + (c & 15);
+		return n;
 	}
 }
