@@ -9,7 +9,7 @@ import java.util.Queue;
 public class P23290 {
 	static int m, s;
 	static Aquarium[][] map = new Aquarium[4][4];
-	static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1}, dy = {-1, -1, 0, 1, 1, 1, 0, -1}; // 좌부터 시작
+	static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1}, dy = {-1, -1, 0, 1, 1, 1, 0, -1};
 	static int[] ddx = {0, -1, 0, 1, 0}, ddy = {0, 0, -1, 0, 1};
 	static int[] shark = new int[2];
 
@@ -28,13 +28,11 @@ public class P23290 {
 		shark[0] = read() - 1;
 		shark[1] = read() - 1;
 		while (s-- > 0) {
-			// 1, 2. 복제마법을 시전하며 물고기를 이동시키기
 			List<Fish> copyFishList = new ArrayList<>();
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; j++) {
 					for (Fish fish : map[i][j].fishList) {
 						copyFishList.add(new Fish(fish.x, fish.y, fish.d)); // 복제
-						//해당 방향으로 이동
 						boolean moveSuccess = false;
 						for (int k = 0, d = fish.d; k < 8; k++, d = (d + 7) % 8) {
 							int newX = fish.x + dx[d], newY = fish.y + dy[d];
@@ -54,17 +52,13 @@ public class P23290 {
 					}
 				}
 			}
-			// 2. 이동한 물고기 후처리
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; j++) {
 					map[i][j].processTmp();
 				}
 			}
 
-			// 3. 상어가 연속 3칸 이동(상하좌우 인접으로), 격자 범위 벗어나면 불가능
-			// 연속 칸 중에 상어가 물고기가 있는 같은 칸으로 이동하면 물고기 제외, 물고기 냄새 남김
-			// 이동 방법중 물고기를 가장 많이 먹을 수 있는 곳으로 이동하고, 여러가지라면 사전 순으로 앞서는 방법
-			Point move = new Point(-1,-1);
+			Queue<Point> sharkMove = new PriorityQueue<>();
 			for (int i = 1; i <= 4; i++) {
 				for (int j = 1; j <= 4; j++) {
 					for (int k = 1; k <= 4; k++) {
@@ -80,25 +74,23 @@ public class P23290 {
 							if (!(x2 == x3 && y2 == y3) && !(x1 == x3 && y1 == y3)) {
 								cnt += map[x3][y3].fishList.size();
 							}
-							move.change(number,cnt);
+							sharkMove.offer(new Point(number, cnt));
 						}
 					}
 				}
 			}
+			Point move = sharkMove.poll();
 			for (int i = 0, j = move.number, k = 100; i < 3; i++, j %= k, k /= 10) {
 				int d = j / k;
 				shark[0] += ddx[d];
 				shark[1] += ddy[d];
 				map[shark[0]][shark[1]].arriveShark(s - 2);
 			}
-			// 4. 냄새 제거
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; j++) {
 					map[i][j].smellClear(s);
 				}
 			}
-
-			// 5. 복제 완료
 			for (Fish fish : copyFishList) {
 				map[fish.x][fish.y].addFish(fish);
 			}
@@ -168,19 +160,18 @@ public class P23290 {
 		}
 	}
 
-	static class Point {
+	static class Point implements Comparable<Point> {
 		int number, cnt;
 
 		public Point(int number, int cnt) {
 			this.number = number;
 			this.cnt = cnt;
 		}
-		public void change(int number, int cnt) {
-			if(this.cnt<cnt||(this.cnt==cnt&&number<this.number)) {
-				this.number = number;
-				this.cnt = cnt;
-			}
-		}
 
+		@Override
+		public int compareTo(Point o) {
+			int compare = Integer.compare(o.cnt, this.cnt);
+			return compare == 0 ? Integer.compare(this.number, o.number) : compare;
+		}
 	}
 }
