@@ -1,84 +1,106 @@
 package ps.baekjoon;
 
-import java.awt.*;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-// 2022/07/31 17:51 ~ 18:32/ 20:14 ~ 20:33 / xx:xx = xx분
+// 2022/07/31 17:51 ~ 18:32/ 20:14 ~ 20:33 / 01:37 ~ 01:53 = 76분
 public class P17140 {
-	static int r,c,k,n=3,m=3,time=0;
+	static int r, c, k, n = 3, m = 3, time = 0;
 	static int[][] arr = new int[100][100];
+	static Queue<Point> queue = new PriorityQueue<>();
 
 	public static void main(String[] args) throws Exception {
 		// 최초 n,m은 3으로 잡자. r과 c가 n과 m보다 작거나 같지 않으면 무시하자.
-		r = read()-1;
-		c = read()-1;
+		r = read() - 1;
+		c = read() - 1;
 		k = read();
-		for(int i=0;i<n;i++) {
-			for(int j=0;j<m;j++) {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
 				arr[i][j] = read();
 			}
 		}
 
-		while(time<101 && arr[r][c] != k) {
+		while (time < 101 && arr[r][c] != k) {
 			// r연산
-			if(n>=m) {
-				for(int i=0;i<100;i++) {
-					Map<Integer, Integer> map = new HashMap<>();
-					for(int j=0;j<100;j++) {
-						if(arr[i][j] != 0) {
-							map.put(arr[i][j], map.getOrDefault(arr[i][j], 0) + 1);
+			if (n >= m) {
+				int tmp = -1;
+				for (int i = 0; i < n; i++) {
+					int[] rCnt = new int[101];
+					int max = -1;
+					for (int j = 0; j < m; j++) {
+						rCnt[arr[i][j]]++;
+						max = Math.max(max,arr[i][j]);
+					}
+					for(int j=1;j<=max;j++) {
+						if(rCnt[j] != 0) {
+							queue.offer(new Point(j,rCnt[j]));
 						}
 					}
-					Queue<Point> queue = new PriorityQueue<>(Comparator.comparingInt((Point o) -> o.y).thenComparingInt(o -> o.x));
-					for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-						queue.offer(new Point(entry.getKey(), entry.getValue()));
-					}
 					int cnt = 0;
-					while(!queue.isEmpty() && cnt<100) {
+					while (!queue.isEmpty() && cnt < 100) {
 						Point poll = queue.poll();
 						arr[i][cnt++] = poll.x;
 						arr[i][cnt++] = poll.y;
-;					}
-					m = Math.max(cnt,m);
-					for(;cnt<100&&arr[i][cnt]!=0;cnt++) {
+					}
+					tmp = Math.max(tmp, cnt);
+					for (; cnt < 100; cnt++) {
 						arr[i][cnt] = 0;
 					}
+					while(!queue.isEmpty()) {
+						queue.poll();
+					}
 				}
+				m = tmp;
 			}
 			// c연산
-			else if(n<m) {
-				for(int j=0;j<100;j++) {
-					Map<Integer, Integer> map = new HashMap<>();
-					for(int i=0;i<100;i++) {
-						if(arr[i][j]!=0) {
-							map.put(arr[i][j], map.getOrDefault(arr[i][j], 0) + 1);
+			else {
+				int tmp = -1;
+				for (int j = 0; j < m; j++) {
+					int[] cCnt = new int[101];
+					int max = -1;
+					for (int i = 0; i < n; i++) {
+						cCnt[arr[i][j]]++;
+						max = Math.max(max,arr[i][j]);
+					}
+					for(int i=1;i<=max;i++) {
+						if(cCnt[i]!=0) {
+							queue.offer(new Point(i,cCnt[i]));
 						}
 					}
-					Queue<Point> queue = new PriorityQueue<>(Comparator.comparingInt((Point o) -> o.y).thenComparingInt(o -> o.x));
-					for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-						queue.offer(new Point(entry.getKey(), entry.getValue()));
-					}
 					int cnt = 0;
-					while(!queue.isEmpty() && cnt<100) {
+					while (!queue.isEmpty() && cnt < 100) {
 						Point poll = queue.poll();
 						arr[cnt++][j] = poll.x;
 						arr[cnt++][j] = poll.y;
 					}
-					n = Math.max(cnt,n);
-					for(;cnt<100&&arr[cnt][j]!=0;cnt++) {
+					tmp = Math.max(tmp, cnt);
+					for (; cnt < 100; cnt++) {
 						arr[cnt][j] = 0;
 					}
+					while(!queue.isEmpty()) {
+						queue.poll();
+					}
 				}
+				n = tmp;
 			}
-			System.out.println(n+" "+m);
 			time++;
 		}
 		System.out.println(time == 101 ? -1 : time);
+	}
+
+	static class Point implements Comparable<Point> {
+		int x,y;
+		public Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+
+		@Override
+		public int compareTo(Point o) {
+			int comp = Integer.compare(this.y, o.y);
+			return comp == 0 ? Integer.compare(this.x,o.x) : comp;
+		}
 	}
 
 	static int read() throws Exception {
