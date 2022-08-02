@@ -1,93 +1,95 @@
 package ps.baekjoon;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-
-// 2022/07/22
+// 2022/08/02 20:04 ~ 21:03  = 59분
 public class P19236 {
-	static int[] dx = {-1,-1,0,1,1,1,0,-1}, dy = {0,-1,-1,-1,0,1,1,1};
-	static int[][] num, dir;
-	static List<Fish> fishList = new ArrayList<>();
-	static int max;
+	static int[] dx = {-1, -1, 0, 1, 1, 1, 0, -1}, dy = {0, -1, -1, -1, 0, 1, 1, 1};
+	static int max = -1;
+
 	public static void main(String[] args) throws Exception {
-		for(int i=0;i<4;i++) {
-			for(int j=0;j<4;j++) {
-				num[i][j] = read();
-				dir[i][j] = read() -1;
-				fishList.add(new Fish(i,j,num[i][j],dir[i][j]));
+		Fish[][] fishArray = new Fish[4][4];
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				fishArray[i][j] = new Fish(read(), read() - 1);
 			}
 		}
-		Fish shark = new Fish(0, 0, num[0][0], dir[0][0]);
-		dir[0][0] = num[0][0] = 0;
-		fishList.sort(Comparator.comparingInt(o -> o.size));
-		dfs(shark, num, dir);
+		Shark shark = new Shark(0, 0, fishArray[0][0].dir, fishArray[0][0].number);
+		dfs(fishArray, shark, 0, 0);
 		System.out.println(max);
 	}
 
-	static int[][] copy(int[][] origin) {
-		int[][] copy = new int[4][4];
-		for(int i=0;i<4;i++) {
-			System.arraycopy(origin[i], 0, copy[i], 0, 4);
+	private static void dfs(Fish[][] fishArray, Shark shark, int eatX, int eatY) {
+		Fish[][] copyFish = copy(fishArray);
+		copyFish[eatX][eatY] = null;
+		System.out.println("현재 상어 위치: " + shark.x + " " + shark.y);
+		for (Fish[] fish : copyFish) {
+			for (Fish fish1 : fish) {
+				System.out.print(fish1 == null ? 0 + " " : fish1.number + " ");
+			}
+			System.out.println();
 		}
-		return copy;
-	}
-
-	private static void dfs(Fish shark, int[][] num, int[][] dir) {
-		max = Math.max(shark.size, max);
-		int[][] newNum = copy(num), newDirs = copy(dir);
-		//모든 물고기 이동
-		for (Fish fish : fishList) {
-			// 8방향 중 가능한 곳이면 이동
-			for(int i=0, j=fish.dir;i<8;i++, j = (j+7)%8) {
-				int newX = fish.x+dx[j], newY = fish.y+dy[j];
-				if (isLimited(newX, newY)||(newX==shark.x&&newY== shark.y)) {
-				} else {
-					for (Fish fish1 : fishList) {
-						if(fish1.x == newX && fish1.y == newY) {
-							fish1.x = fish.x;
-							fish1.y = fish.y;
-							fish.x = newX;
-							fish.y = newY;
-							newNum[newX][newY] = fish.size;
-							newNum[fish1.x][fish1.y] = fish1.size;
-							newDirs[newX][newY] = fish.dir;
-							newDirs[fish1.x][fish1.y] = fish1.dir;
-						}
+		System.out.println();
+		max = Math.max(max, shark.sum);
+		for (int i = 1; i <= 16; i++) {
+			int x = 0, y = 0, dir = 0;
+			boolean pass = false;
+			for (int j = 0; j < 4 && !pass; j++) {
+				for (int k = 0; k < 4; k++) {
+					if (copyFish[j][k] != null && copyFish[j][k].number == i) {
+						x = j;
+						y = k;
+						dir = copyFish[j][k].dir;
+						pass = true;
+						break;
 					}
-					break;
+				}
+			}
+			if (pass) {
+				for (int j = dir, k = 0; k < 8; j = (j + 1) % 8, k++) {
+					int newX = x + dx[j], newY = y + dy[j];
+					if (newX >= 0 && newY >= 0 && newX < 4 && newY < 4 && !(newX == shark.x && newY == shark.y)) {
+						Fish tmp = new Fish(i, j);
+						copyFish[x][y] = copyFish[newX][newY] != null ?
+							new Fish(copyFish[newX][newY].number, copyFish[newX][newY].dir) : null;
+						copyFish[newX][newY] = tmp;
+						break;
+					}
 				}
 			}
 		}
-
-		// 상어의 이동
-		int newX = shark.x+dx[shark.dir], newY = shark.y+dy[shark.dir];
-		while(isLimited(newX, newY)) {
-			int newSize = newNum[newX][newY], newDir = newDirs[newX][newY];
-			if(newNum[newX][newY]!=0) {
-				newNum[newX][newY] = newDirs[newX][newY] = 0;
-				dfs(new Fish(newX, newY, shark.size + newSize, newDir), newNum, newDirs);
-				newNum[newX][newY] = newSize;
-				newDirs[newX][newY] = newDir;
+		System.out.println("물고기의 이동");
+		for (Fish[] fish : copyFish) {
+			for (Fish fish1 : fish) {
+				System.out.print(fish1 == null ? 0 + " " : fish1.number + " ");
 			}
-			newX += dx[shark.dir];
-			newY += dy[shark.dir];
+			System.out.println();
 		}
+		System.out.println();
+		int dist = 1;
+		while (true) {
+			int newX = shark.x + dx[shark.dir] * dist, newY = shark.y + dy[shark.dir] * dist;
+			if (newX < 0 || newY < 0 || newX > 3 || newY > 3) {
+				break;
+			}
+			if (copyFish[newX][newY] != null) {
+				dfs(copyFish, new Shark(newX, newY, copyFish[newX][newY].dir, shark.sum + copyFish[newX][newY].number),
+					newX, newY);
+			}
+			dist++;
+		}
+		System.out.println();
+
 	}
 
-	private static boolean isLimited(int x, int y) {
-		return x>=0&&y>=0&&x<4&&y<4;
-	}
-
-	static class Fish {
-		int x, y, size, dir;
-		public Fish(int x, int y, int size, int dir) {
-			this.x = x;
-			this.y = y;
-			this.size = size;
-			this.dir = dir;
+	private static Fish[][] copy(Fish[][] fishArray) {
+		Fish[][] ret = new Fish[4][4];
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				if (fishArray[i][j] != null) {
+					ret[i][j] = new Fish(fishArray[i][j].number, fishArray[i][j].dir);
+				}
+			}
 		}
+		return ret;
 	}
 
 	static int read() throws Exception {
@@ -95,5 +97,26 @@ public class P19236 {
 		while ((c = System.in.read()) > 32)
 			n = (n << 3) + (n << 1) + (c & 15);
 		return n;
+	}
+
+	static class Fish {
+		int number;
+		int dir;
+
+		public Fish(int number, int dir) {
+			this.number = number;
+			this.dir = dir;
+		}
+	}
+
+	static class Shark {
+		int x, y, dir, sum;
+
+		public Shark(int x, int y, int dir, int sum) {
+			this.x = x;
+			this.y = y;
+			this.dir = dir;
+			this.sum = sum;
+		}
 	}
 }
